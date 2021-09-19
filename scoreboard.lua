@@ -1,12 +1,25 @@
 local listOn = false
 local total
+local Toggled = false
+
+RegisterCommand("scoreboardToggle", function(source, args)
+    if args[1] == "on" then
+        Toggled = true
+        notify("~g~Scoreboard has been set to a toggle!")
+    elseif args[1] == "off" then
+        Toggled = false
+        notify("~g~Scoreboard has been set to a hold!")
+    else
+        notify("~o~Please to /scoreboardToggle on or off")
+    end
+end)
 
 Citizen.CreateThread(function()
     listOn = false
     while true do
         Wait(0)
 
-        if IsControlJustReleased(0, Config.KeyBind) and GetLastInputMethod(0) then
+        if toggle() and GetLastInputMethod(0) then
             if not listOn then
                 local players = {}
                 ptable = GetPlayers()
@@ -38,7 +51,7 @@ Citizen.CreateThread(function()
                     Wait(0)
                     DisableAllControlActions(0)
                     EnableControlAction(0, Config.KeyBind, true)
-                    if(IsControlJustReleased(0, Config.KeyBind)) then
+                    if (IsControlJustReleased(0, Config.KeyBind)) then
                         SetNuiFocus(false, false)
                         SetNuiFocusKeepInput(false)
                         listOn = false
@@ -52,6 +65,14 @@ Citizen.CreateThread(function()
         end
     end
 end)
+
+function toggle()
+    if Toggled then
+        return IsControlJustReleased(0, Config.KeyBind)
+    else
+        return IsControlPressed(0, Config.KeyBind)
+    end
+end
 
 
 function GetPlayers()
@@ -77,4 +98,10 @@ function sanitize(txt)
     return txt
         :gsub('[&<>\n]', replacements)
         :gsub(' +', function(s) return ' '..('&nbsp;'):rep(#s-1) end)
+end
+
+function notify(text)
+    SetNotificationTextEntry("STRING")
+    AddTextComponentString(text)
+    DrawNotification(true, true)
 end
