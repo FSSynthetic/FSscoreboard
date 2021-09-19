@@ -3,7 +3,7 @@ games {'gta5'}
 
 author 'FSSynthetic'
 description 'A Simple FiveM scoreboard'
-version '1.0.0'
+version '1.1.0'
 
 ui_page 'html/scoreboard.html'
 
