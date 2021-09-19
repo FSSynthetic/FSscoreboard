@@ -1,6 +1,5 @@
 local listOn = false
 local total
-local scoreboard
 local Toggled = false
 
 RegisterCommand("scoreboardToggle", function(source, args)
