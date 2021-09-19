@@ -11,7 +11,6 @@ Citizen.CreateThread(function()
                 local players = {}
                 ptable = GetPlayers()
                 for _, i in ipairs(ptable) do
-                    r, g, b = GetPlayerRgbColour(i)
                     table.insert(players, 
                     '<div class="col col-6">' ..
                         '<div class="player-info">' ..
