@@ -35,14 +35,15 @@ Besides that, it's pretty straightforward.
 
 <details>
 <summary>Newest Version Changes!</summary>
-  <h3> Version 1.2.0 </h3>
+  <h3> Version 1.1.2 </h3>
 <ul>
   <li><h4> Added Ability to choose Toggle </h4></li>
   <ul>
     <li> Added the ability to choose whether the scoreboard is toggled on and off or if the scoreboard is turned on whilst holding a key and turned off when that key is released. The command to choose said ability is: /scoreboardToggle (on/off). </li>
+  </ul>
     <li> Updated config.lua comments. </li>
     <li> Updated fxmanifest.lua version number. </li>
     <li> Updated readme to add version changes. </li>
-  </ul>
+    <li> Added safety check to make sure the scoreboard toggle command contains only one argument before checking for on or off </li>
 </ul>
 </details>
