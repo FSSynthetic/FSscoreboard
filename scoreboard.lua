@@ -3,12 +3,16 @@ local total
 local Toggled = false
 
 RegisterCommand("scoreboardToggle", function(source, args)
-    if args[1] == "on" then
-        Toggled = true
-        notify("~g~Scoreboard has been set to a toggle!")
-    elseif args[1] == "off" then
-        Toggled = false
-        notify("~g~Scoreboard has been set to a hold!")
+    if #args == 1 then
+        if args[1] == "on" then
+            Toggled = true
+            notify("~g~Scoreboard has been set to a toggle!")
+        elseif args[1] == "off" then
+            Toggled = false
+            notify("~g~Scoreboard has been set to a hold!")
+        else
+            notify("~o~Please to /scoreboardToggle on or off")
+        end
     else
         notify("~o~Please to /scoreboardToggle on or off")
     end
